@@ -6,8 +6,10 @@ using UnityEngine.UIElements;
 
 public class MyBallz : MonoBehaviour
 {
-    public List<Ballz> chaine = new();
+    [SerializeField] private int destroyChainNum;
+    [HideInInspector]public List<Ballz> chaine = new();
     private Rigidbody rb;
+    private bool finished;
 
     private void Start()
     {
@@ -15,13 +17,20 @@ public class MyBallz : MonoBehaviour
         chaine.Add(GetComponent<Ballz>());
     }
 
+    private void Update()
+    {
+        if (finished)
+        {
+            rb.velocity = Vector3.zero;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.TryGetComponent<Ballz>(out _))
         {
-            rb.velocity = Vector3.zero;
+            finished = true;
             rb.useGravity = false;
-            rb.isKinematic = true;
             for (int i = 0; i < chaine.Count; i++)
             {
                 for (int l = 0; l < chaine[i].Links.Count; l++)
@@ -41,6 +50,26 @@ public class MyBallz : MonoBehaviour
                     }
                 }
             }
+            if (chaine.Count >= destroyChainNum)
+            {
+                for (int i = chaine.Count - 1; i >= 0; i--)
+                {
+                    for (int a = 0; a < GunScript.existingColors.Count; a++)
+                    {
+                        if (GunScript.existingColors[a] == chaine[i].BallType)
+                        {
+                            GunScript.existingColors.RemoveAt(a);
+                        }
+                    }
+                    Destroy(chaine[i].gameObject);
+                }
+            }
+            rb.velocity = Vector3.zero;
+        }
+        else if (collision.collider.CompareTag("Wall"))
+        {
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
         }
     }
 }

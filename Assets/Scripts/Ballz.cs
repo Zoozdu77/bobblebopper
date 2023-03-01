@@ -1,11 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ballz : MonoBehaviour
 {
-    public int BallType;
-    public List<Ballz> Links = new();
+    [SerializeField] private Material[] materials;
+    [SerializeField] private bool isToShow;
+    public Int16 BallType;
+    [HideInInspector]public List<Ballz> Links = new();
+
+    private void Start()
+    {
+        ChangeColor();
+        if (!isToShow)
+        {
+            GunScript.existingColors.Add(BallType);
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -16,5 +29,17 @@ public class Ballz : MonoBehaviour
                 Links.Add(ball);
             }
         }
+    }
+
+    public void ChangeColor()
+    {
+        int mat = ((int)BallType);
+        if (mat >= materials.Length)
+        {
+            Debug.LogError("Trop long");
+            Debug.Log(mat);
+            return;
+        }
+        gameObject.GetComponent<MeshRenderer>().material = materials[mat];
     }
 }
