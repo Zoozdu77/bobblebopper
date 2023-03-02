@@ -14,13 +14,14 @@ public class GunScript : MonoBehaviour
     [Header("Shoot")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private Animator anims;
     [SerializeField] private Ballz nextBall;
     [SerializeField] private Ballz currBall;
     [SerializeField] private float shootCooldown;
     [SerializeField] private float bulletSpeed;
     public static List<Int16> existingColors = new();
     private readonly List<Int16> ballsToCome = new();
-    private int numberOfColors = 5;
+    public static int numberOfColors = 3;
     private float cooldown;
 
     private void Start()
@@ -56,6 +57,7 @@ public class GunScript : MonoBehaviour
 
     private void Shoot()
     {
+        anims.SetTrigger("Shoot");
         cooldown = shootCooldown;
         GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation, null);
         newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
@@ -63,6 +65,9 @@ public class GunScript : MonoBehaviour
         ballsToCome[0] = ballsToCome[1];
 
         int randomnumber = UnityEngine.Random.Range(0, existingColors.Count);
+        Debug.Log(existingColors.Count);
+        print(randomnumber);
+        print(ballsToCome[1]);
         ballsToCome[1] = existingColors[randomnumber];
 
         currBall.BallType = ballsToCome[0];

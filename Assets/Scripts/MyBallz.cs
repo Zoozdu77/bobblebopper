@@ -22,6 +22,7 @@ public class MyBallz : MonoBehaviour
         if (finished)
         {
             rb.velocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
@@ -68,7 +69,7 @@ public class MyBallz : MonoBehaviour
         }
         else if (collision.collider.CompareTag("Wall"))
         {
-            rb.velocity = Vector3.zero;
+            finished = true;
             rb.useGravity = false;
         }
     }

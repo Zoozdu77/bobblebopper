@@ -14,11 +14,13 @@ public class Ballz : MonoBehaviour
     private void Start()
     {
         ChangeColor();
-        if (!isToShow)
+        if (isToShow)
         {
             GunScript.existingColors.Add(BallType);
         }
     }
+
+    
 
     public void OnTriggerEnter(Collider other)
     {

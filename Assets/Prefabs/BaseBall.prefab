@@ -111,7 +111,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1307925804204162672
 Rigidbody:
@@ -147,5 +147,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5d13e5d90f73f744aa5949258d91ddb9, type: 2}
   - {fileID: 2100000, guid: aed0d8ef4adb38e4480d1ecfa633212a, type: 2}
   - {fileID: 2100000, guid: d30fa68c546825e49b6b5c7ce325b77a, type: 2}
+  isToShow: 0
   BallType: 0
   Links: []
