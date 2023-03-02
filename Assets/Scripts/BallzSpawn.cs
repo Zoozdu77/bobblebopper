@@ -19,4 +19,20 @@ public class BallzSpawn : MonoBehaviour
             }
         }
     }
+
+    public bool StillBaballes()
+    {
+        bool IsAlive = false;
+        for (int x = 0; x < 9; x++)
+        {
+            for (int y = 0; y < 9; y++)
+            {
+                if (baballes[x, y])
+                {
+                    IsAlive = true;
+                }
+            }
+        }
+        return IsAlive;
+    }
 }

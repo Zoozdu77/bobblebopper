@@ -8,19 +8,24 @@ public class Ballz : MonoBehaviour
 {
     [SerializeField] private Material[] materials;
     [SerializeField] private bool isToShow;
+    [SerializeField] private GameObject ParticleSys;
     public Int16 BallType;
     [HideInInspector]public List<Ballz> Links = new();
 
     private void Start()
     {
         ChangeColor();
-        if (isToShow)
+        if (!isToShow)
         {
             GunScript.existingColors.Add(BallType);
         }
     }
 
-    
+    public void Destruction()
+    {
+        Instantiate(ParticleSys, transform.position, transform.rotation, null);
+        Destroy(gameObject);
+    }
 
     public void OnTriggerEnter(Collider other)
     {

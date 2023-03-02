@@ -21,7 +21,7 @@ public class GunScript : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     public static List<Int16> existingColors = new();
     private readonly List<Int16> ballsToCome = new();
-    public static int numberOfColors = 3;
+    public static int numberOfColors = 4;
     private float cooldown;
 
     private void Start()
@@ -64,12 +64,12 @@ public class GunScript : MonoBehaviour
         newBullet.GetComponent<Ballz>().BallType = ballsToCome[0] ;
         ballsToCome[0] = ballsToCome[1];
 
-        int randomnumber = UnityEngine.Random.Range(0, existingColors.Count);
-        Debug.Log(existingColors.Count);
-        print(randomnumber);
-        print(ballsToCome[1]);
-        ballsToCome[1] = existingColors[randomnumber];
+        if (existingColors.Count > 0)
+        {
+            int randomnumber = UnityEngine.Random.Range(0, existingColors.Count);
+            ballsToCome[1] = existingColors[randomnumber];
 
+        }
         currBall.BallType = ballsToCome[0];
         nextBall.BallType = ballsToCome[1];
         currBall.ChangeColor();

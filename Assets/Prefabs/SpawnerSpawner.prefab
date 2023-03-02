@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8733398254993076241}
   - component: {fileID: 4827277812948813079}
   m_Layer: 0
-  m_Name: CMaBite
+  m_Name: SpawnerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,5 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 8370984660673014289, guid: 3eea84d4e02faec47b9d1c5f23da1ffc, type: 3}
   movementPerTick: {x: 0, y: 0, z: -1}
-  baseTimer: 10
+  DamageZValue: 24
+  baseTimer: 1
   dividePerMinute: 2
+  MoveBeetweenSpawns: 5

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyChainNum: 4
+  scoreMultiplication: 100
   chaine: []
 --- !u!114 &1510267333523299252
 MonoBehaviour:
@@ -163,5 +164,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: aed0d8ef4adb38e4480d1ecfa633212a, type: 2}
   - {fileID: 2100000, guid: d30fa68c546825e49b6b5c7ce325b77a, type: 2}
   isToShow: 0
+  ParticleSys: {fileID: 2604465872253711316, guid: b99e882755ba08049911fc6bd9311247,
+    type: 3}
   BallType: 0
   Links: []

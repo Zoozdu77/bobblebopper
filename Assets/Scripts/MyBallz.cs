@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class MyBallz : MonoBehaviour
 {
     [SerializeField] private int destroyChainNum;
+    [SerializeField] private int scoreMultiplication;
     [HideInInspector]public List<Ballz> chaine = new();
     private Rigidbody rb;
     private bool finished;
@@ -51,6 +52,7 @@ public class MyBallz : MonoBehaviour
                     }
                 }
             }
+            BallzManager.Score += chaine.Count * scoreMultiplication;
             if (chaine.Count >= destroyChainNum)
             {
                 for (int i = chaine.Count - 1; i >= 0; i--)
@@ -60,9 +62,10 @@ public class MyBallz : MonoBehaviour
                         if (GunScript.existingColors[a] == chaine[i].BallType)
                         {
                             GunScript.existingColors.RemoveAt(a);
+                            break;
                         }
                     }
-                    Destroy(chaine[i].gameObject);
+                    chaine[i].Destruction();
                 }
             }
             rb.velocity = Vector3.zero;
