@@ -9,6 +9,7 @@ public class MyBallz : MonoBehaviour
     [SerializeField] private int destroyChainNum;
     [SerializeField] private int scoreMultiplication;
     [HideInInspector]public List<Ballz> chaine = new();
+    public AudioSource audioSource;
     private Rigidbody rb;
     private bool finished;
 
@@ -52,7 +53,7 @@ public class MyBallz : MonoBehaviour
                     }
                 }
             }
-            BallzManager.Score += chaine.Count * scoreMultiplication;
+            BallzManager.Score += (chaine.Count - 1) * scoreMultiplication;
             if (chaine.Count >= destroyChainNum)
             {
                 for (int i = chaine.Count - 1; i >= 0; i--)
@@ -65,7 +66,7 @@ public class MyBallz : MonoBehaviour
                             break;
                         }
                     }
-                    chaine[i].Destruction();
+                    chaine[i].Destruction(audioSource);
                 }
             }
             rb.velocity = Vector3.zero;

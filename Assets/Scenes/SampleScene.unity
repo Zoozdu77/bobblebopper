@@ -293,6 +293,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d30fa68c546825e49b6b5c7ce325b77a, type: 2}
   isToShow: 0
   ParticleSys: {fileID: 0}
+  popped: {fileID: 0}
   BallType: 0
   Links: []
 --- !u!135 &58063929
@@ -1057,6 +1058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
+      propertyPath: sons
+      value: 
+      objectReference: {fileID: 2133513877}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 714728860}
@@ -1067,9 +1073,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
+      propertyPath: MultPerSec
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: baseSpeedPerSec
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
       propertyPath: MoveBeetweenSpawns
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 584501675}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 2142523319}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 1071267988}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[3]
+      value: 
+      objectReference: {fileID: 445620684}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[4]
+      value: 
+      objectReference: {fileID: 13526878}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
+      propertyPath: lights.Array.data[5]
+      value: 
+      objectReference: {fileID: 798877292}
     - target: {fileID: 8733398254993076241, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
       propertyPath: m_RootOrder
@@ -1719,6 +1770,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d30fa68c546825e49b6b5c7ce325b77a, type: 2}
   isToShow: 1
   ParticleSys: {fileID: 0}
+  popped: {fileID: 0}
   BallType: 0
   Links: []
 --- !u!135 &1576806395
@@ -1972,6 +2024,7 @@ GameObject:
   - component: {fileID: 2133513870}
   - component: {fileID: 2133513876}
   - component: {fileID: 2133513875}
+  - component: {fileID: 2133513877}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1998,8 +2051,10 @@ MonoBehaviour:
   anims: {fileID: 2133513875}
   nextBall: {fileID: 1576806394}
   currBall: {fileID: 58063928}
-  shootCooldown: 1
+  shootCooldown: 0.75
   bulletSpeed: 100
+  audioS: {fileID: 2133513877}
+  pop: {fileID: 8300000, guid: 0961ac6c0e4771e4280f0a7c2db5ed08, type: 3}
 --- !u!4 &2133513874
 Transform:
   m_ObjectHideFlags: 0
@@ -2055,6 +2110,102 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!82 &2133513877
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133513869}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b8fe0a4a07e7f9c46a477906b4552a73, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2142523317
 GameObject:
   m_ObjectHideFlags: 0

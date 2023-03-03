@@ -9,6 +9,9 @@ public class Menus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI HScore;
     [SerializeField] private TextMeshProUGUI Score;
     [SerializeField] private GameObject NEWHSCORE;
+    [SerializeField] private AudioSource sons;
+    [SerializeField] private AudioClip typing;
+    [SerializeField] private AudioClip Yeah;
 
     private void Start()
     {
@@ -20,10 +23,6 @@ public class Menus : MonoBehaviour
         if (Score != null)
         {
             Score.text = "Score : " + PlayerPrefs.GetInt("Score").ToString();
-            if (PlayerPrefs.GetInt("HScore") <= PlayerPrefs.GetInt("Score") && NEWHSCORE != null)
-            {
-                NEWHSCORE.SetActive(true);
-            }
         }
     }
 
@@ -40,5 +39,19 @@ public class Menus : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Typing()
+    {
+        sons.PlayOneShot(typing);
+    }
+
+    public void YEAH()
+    {
+        if (PlayerPrefs.GetInt("HScore") <= PlayerPrefs.GetInt("Score") && NEWHSCORE != null)
+        {
+            NEWHSCORE.SetActive(true);
+            sons.PlayOneShot(Yeah);
+        }
     }
 }

@@ -7,17 +7,19 @@ using TMPro;
 public class BallzManager : MonoBehaviour
 {
     [SerializeField] private GameObject spawner;
+    [SerializeField] private Light[] lights;
     [SerializeField] private TextMeshProUGUI ScoreText;
     private readonly List<Transform> spawnedSpawners = new();
     [SerializeField] private Vector3 movementPerTick;
     [SerializeField] private float DamageZValue;
-    [SerializeField] private float baseTimer;
-    [SerializeField] private float dividePerMinute;
+    [SerializeField] private float baseSpeedPerSec;
+    [SerializeField] private float MultPerSec;
     [SerializeField] private int MoveBeetweenSpawns;
-    private float Timer;
+    [SerializeField] private AudioSource sons;
+    private float lightTimer;
     public static int Score;
-    private int moveSinceLastInstance;
-    private bool danger;
+    private float moveSinceLastInstance;
+    private bool danger = false;
 
     private void Start()
     {
@@ -27,18 +29,11 @@ public class BallzManager : MonoBehaviour
     private void Update()
     {
         ScoreText.text = "Score : " + Score;
-        if (Timer <= 0)
+        MoveSpawners();
+        if (moveSinceLastInstance >= MoveBeetweenSpawns)
         {
-            MoveSpawners();
-            moveSinceLastInstance++;
-            if (moveSinceLastInstance >= MoveBeetweenSpawns)
-            {
-                InstanciateSpawners();
-                moveSinceLastInstance = 0;
-            }
-        } else
-        {
-            Timer -= Time.deltaTime;
+            InstanciateSpawners();
+            moveSinceLastInstance = 0;
         }
     }
 
@@ -48,11 +43,13 @@ public class BallzManager : MonoBehaviour
         {
             if (spawnedSpawners[i].gameObject.activeSelf)
             {
-                spawnedSpawners[i].position += movementPerTick;
-                if (spawnedSpawners[i].position.z < DamageZValue - 3 && danger == false)
+                spawnedSpawners[i].position += (MultPerSec * Time.time + 1) * baseSpeedPerSec * Time.deltaTime * movementPerTick;
+                moveSinceLastInstance += (MultPerSec * Time.time + 1) * baseSpeedPerSec * Time.deltaTime;
+                if (spawnedSpawners[i].position.z < DamageZValue +5 && danger == false)
                 {
+                    print("ok");
+                    sons.pitch = 1.3f;
                     danger = true;
-                    //Danger
                 }else if (spawnedSpawners[i].position.z < DamageZValue)
                 {
                     if (spawnedSpawners[i].GetComponent<BallzSpawn>().StillBaballes())
@@ -68,7 +65,6 @@ public class BallzManager : MonoBehaviour
                 }
             }
         }
-        Timer += baseTimer / 1 + (dividePerMinute * (Time.time / 60));
     }
 
     private void InstanciateSpawners()

@@ -19,6 +19,8 @@ public class GunScript : MonoBehaviour
     [SerializeField] private Ballz currBall;
     [SerializeField] private float shootCooldown;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private AudioSource audioS;
+    [SerializeField] private AudioClip pop;
     public static List<Int16> existingColors = new();
     private readonly List<Int16> ballsToCome = new();
     public static int numberOfColors = 4;
@@ -60,6 +62,8 @@ public class GunScript : MonoBehaviour
         anims.SetTrigger("Shoot");
         cooldown = shootCooldown;
         GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation, null);
+        newBullet.GetComponent<MyBallz>().audioSource = audioS;
+        audioS.PlayOneShot(pop);
         newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
         newBullet.GetComponent<Ballz>().BallType = ballsToCome[0] ;
         ballsToCome[0] = ballsToCome[1];

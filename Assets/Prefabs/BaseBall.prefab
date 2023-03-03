@@ -150,5 +150,6 @@ MonoBehaviour:
   isToShow: 0
   ParticleSys: {fileID: 2604465872253711316, guid: b99e882755ba08049911fc6bd9311247,
     type: 3}
+  popped: {fileID: 8300000, guid: 0961ac6c0e4771e4280f0a7c2db5ed08, type: 3}
   BallType: 0
   Links: []

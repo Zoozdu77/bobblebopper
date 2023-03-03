@@ -9,6 +9,7 @@ public class Ballz : MonoBehaviour
     [SerializeField] private Material[] materials;
     [SerializeField] private bool isToShow;
     [SerializeField] private GameObject ParticleSys;
+    [SerializeField] private AudioClip popped;
     public Int16 BallType;
     [HideInInspector]public List<Ballz> Links = new();
 
@@ -21,8 +22,9 @@ public class Ballz : MonoBehaviour
         }
     }
 
-    public void Destruction()
+    public void Destruction(AudioSource Audio)
     {
+        Audio.PlayOneShot(popped);
         Instantiate(ParticleSys, transform.position, transform.rotation, null);
         Destroy(gameObject);
     }
