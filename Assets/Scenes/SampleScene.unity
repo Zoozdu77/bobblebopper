@@ -1139,6 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
+      propertyPath: timeBeetweenMove
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
+        type: 3}
       propertyPath: lights.Array.size
       value: 6
       objectReference: {fileID: 0}

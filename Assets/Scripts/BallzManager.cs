@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Unity.VisualScripting;
 
 public class BallzManager : MonoBehaviour
 {
@@ -12,37 +11,50 @@ public class BallzManager : MonoBehaviour
     private readonly List<Transform> spawnedSpawners = new();
     [SerializeField] private Vector3 movementPerTick;
     [SerializeField] private float DamageZValue;
-    [SerializeField] private float baseSpeedPerSec;
+    [SerializeField] private float timeBeetweenMove;
     [SerializeField] private float MultPerSec;
     [SerializeField] private int MoveBeetweenSpawns;
     [SerializeField] private AudioSource sons;
     public static int Score;
     private float moveSinceLastInstance;
+    private float Timer;
     private bool danger = false;
 
     private void Start()
     {
         Score = 0;
         InstanciateSpawners();
+        Timer = timeBeetweenMove;
     }
 
     private void Update()
     {
-        ScoreText.text = "Score : " + Score;
-        MoveSpawners();
-        if (spawnedSpawners[spawnedSpawners.Count - 1].transform.position.z < transform.position.z - MoveBeetweenSpawns)
+        if (Timer<=0)
         {
-            InstanciateSpawners();
+            ScoreText.text = "Score : " + Score;
+            MoveSpawners();
+            Timer = timeBeetweenMove;
+            if (moveSinceLastInstance >= MoveBeetweenSpawns)
+            {
+                InstanciateSpawners();
+                moveSinceLastInstance = 0;
+            }
+        } else
+        {
+            Timer -= Time.deltaTime;
         }
+        
     }
 
     private void MoveSpawners()
     {
+        Debug.Log("Move, " + moveSinceLastInstance);
+        moveSinceLastInstance++;
         for (int i = 0; i < spawnedSpawners.Count; i++)
         {
             if (spawnedSpawners[i].gameObject.activeSelf)
             {
-                spawnedSpawners[i].position += baseSpeedPerSec * Time.deltaTime * movementPerTick;
+                spawnedSpawners[i].position += movementPerTick;
                 if (spawnedSpawners[i].position.z < DamageZValue +5 && danger == false)
                 {
                     sons.pitch = 1.3f;
@@ -66,7 +78,7 @@ public class BallzManager : MonoBehaviour
 
     private void InstanciateSpawners()
     {
-        moveSinceLastInstance = 0;
+        Debug.Log("Instance, " + moveSinceLastInstance);
         spawnedSpawners.Add(Instantiate(spawner, transform.position, transform.rotation, transform).transform);
     }
 }

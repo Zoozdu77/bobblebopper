@@ -70,8 +70,8 @@ public class GunScript : MonoBehaviour
 
         if (existingColors.Count > 0)
         {
-            int randomnumber = UnityEngine.Random.Range(0, existingColors.Count);
-            ballsToCome[1] = existingColors[randomnumber];
+            int randomnumber = UnityEngine.Random.Range(0, numberOfColors-1);
+            ballsToCome[1] = Convert.ToInt16(randomnumber);
 
         }
         currBall.BallType = ballsToCome[0];
