@@ -7,7 +7,6 @@ using TMPro;
 public class BallzManager : MonoBehaviour
 {
     [SerializeField] private GameObject spawner;
-    [SerializeField] private Light[] lights;
     [SerializeField] private TextMeshProUGUI ScoreText;
     private readonly List<Transform> spawnedSpawners = new();
     [SerializeField] private Vector3 movementPerTick;
@@ -16,13 +15,13 @@ public class BallzManager : MonoBehaviour
     [SerializeField] private float MultPerSec;
     [SerializeField] private int MoveBeetweenSpawns;
     [SerializeField] private AudioSource sons;
-    private float lightTimer;
     public static int Score;
     private float moveSinceLastInstance;
     private bool danger = false;
 
     private void Start()
     {
+        Score = 0;
         InstanciateSpawners();
     }
 
@@ -43,18 +42,17 @@ public class BallzManager : MonoBehaviour
         {
             if (spawnedSpawners[i].gameObject.activeSelf)
             {
-                spawnedSpawners[i].position += (MultPerSec * Time.time + 1) * baseSpeedPerSec * Time.deltaTime * movementPerTick;
-                moveSinceLastInstance += (MultPerSec * Time.time + 1) * baseSpeedPerSec * Time.deltaTime;
+                spawnedSpawners[i].position += ( 1 + MultPerSec * Time.time / 60) * baseSpeedPerSec * Time.deltaTime * movementPerTick;
+                moveSinceLastInstance += (1 + MultPerSec * Time.time / 60) * baseSpeedPerSec * Time.deltaTime;
                 if (spawnedSpawners[i].position.z < DamageZValue +5 && danger == false)
                 {
-                    print("ok");
                     sons.pitch = 1.3f;
                     danger = true;
                 }else if (spawnedSpawners[i].position.z < DamageZValue)
                 {
                     if (spawnedSpawners[i].GetComponent<BallzSpawn>().StillBaballes())
                     {
-                        if (Score >= PlayerPrefs.GetInt("HScore", 0))
+                        if (Score >= PlayerPrefs.GetInt("HScore"))
                         {
                             PlayerPrefs.SetInt("HScore", Score);
                         }

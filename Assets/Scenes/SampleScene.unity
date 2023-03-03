@@ -1074,12 +1074,12 @@ PrefabInstance:
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
       propertyPath: MultPerSec
-      value: 0.02
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}
       propertyPath: baseSpeedPerSec
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4827277812948813079, guid: fb3301271fb269944bb2ccdb3aaece67,
         type: 3}

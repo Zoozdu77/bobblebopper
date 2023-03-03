@@ -15,6 +15,7 @@ public class Menus : MonoBehaviour
 
     private void Start()
     {
+        GunScript.existingColors.Clear();
         if (HScore != null)
         {
             HScore.text = "High Score : " + PlayerPrefs.GetInt("HScore").ToString();

@@ -692,7 +692,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.25
+        time: 5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -720,7 +720,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5
+        time: 5.508333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -748,7 +748,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8
+        time: 4
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -776,7 +776,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8
+        time: 4
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -804,7 +804,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8083334
+        time: 4.008333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1057,7 +1057,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 3.8083334
+    m_StopTime: 5.508333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1748,7 +1748,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.25
+        time: 5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1776,7 +1776,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5
+        time: 5.508333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1804,7 +1804,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8
+        time: 4
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1832,7 +1832,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8
+        time: 4
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -1860,7 +1860,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.8083334
+        time: 4.008333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -2054,7 +2054,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.8
+  - time: 3.9833333
     functionName: YEAH
     data: 
     objectReferenceParameter: {fileID: 0}

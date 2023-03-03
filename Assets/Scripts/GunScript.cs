@@ -39,7 +39,7 @@ public class GunScript : MonoBehaviour
     void Update()
     {
         Mouvement();
-        if (Input.GetButton("Fire1") && cooldown <= 0)
+        if (Input.GetAxis("Fire1") > 0.7 && cooldown <= 0)
         {
             Shoot();
         } else if (cooldown > 0)
