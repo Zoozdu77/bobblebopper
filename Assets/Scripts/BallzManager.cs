@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class BallzManager : MonoBehaviour
 {
@@ -29,10 +30,9 @@ public class BallzManager : MonoBehaviour
     {
         ScoreText.text = "Score : " + Score;
         MoveSpawners();
-        if (moveSinceLastInstance >= MoveBeetweenSpawns)
+        if (spawnedSpawners[spawnedSpawners.Count - 1].transform.position.z < transform.position.z - MoveBeetweenSpawns)
         {
             InstanciateSpawners();
-            moveSinceLastInstance = 0;
         }
     }
 
@@ -42,8 +42,7 @@ public class BallzManager : MonoBehaviour
         {
             if (spawnedSpawners[i].gameObject.activeSelf)
             {
-                spawnedSpawners[i].position += ( 1 + MultPerSec * Time.time / 60) * baseSpeedPerSec * Time.deltaTime * movementPerTick;
-                moveSinceLastInstance += (1 + MultPerSec * Time.time / 60) * baseSpeedPerSec * Time.deltaTime;
+                spawnedSpawners[i].position += baseSpeedPerSec * Time.deltaTime * movementPerTick;
                 if (spawnedSpawners[i].position.z < DamageZValue +5 && danger == false)
                 {
                     sons.pitch = 1.3f;
@@ -67,7 +66,7 @@ public class BallzManager : MonoBehaviour
 
     private void InstanciateSpawners()
     {
-        
+        moveSinceLastInstance = 0;
         spawnedSpawners.Add(Instantiate(spawner, transform.position, transform.rotation, transform).transform);
     }
 }
